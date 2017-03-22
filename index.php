@@ -4,9 +4,10 @@
 	<meta charset="UTF-8"/>
 	<meta name="title" content="Фраза в поиск_результатах"; charset="utf-8"/>
 	<meta http-equiv="Content-Language" content="ru-RU"/> 
-	<meta name="description" content="Описание страницы не более 160 сомволов(для поисковых машин)"/>
+	<meta name="description" content="Сайт, созданный в учебных целях."/>
 	<meta name="keywords" content="Ключевые слова"/>
 	<meta name="robots" content=" "/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -22,10 +23,12 @@
 		document.createElement("article");
 		document.createElement('main');
 	</script>
-	<title>Главная_ADS3</title>
-	<link rel="stylesheet" href="style_ads3.css?123" type="text/css">
+	<title>Главная</title>
+	<link rel="stylesheet" href="css/style.css?123" type="text/css">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<div>
