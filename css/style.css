@@ -54,15 +54,23 @@ body {
 }
 a, a:hover {text-decoration: none;}
 
-.navbar-default .navbar-nav>li>a:hover {
+.navbar-default .navbar-nav>li>a {
+	position: relative;
+	color: #A0A0A0;
+}
+
+.navbar-default .navbar-nav>li a:hover {
+	background-color: #C71111;
+	position: relative;
+	transform: rotate(7deg);
 	color: #E2E2E2;
 	font-size: 130%;
 	transition-duration: .8s;
 }
 
-.navbar-default .navbar-nav>li>a {
-	color: #A0A0A0;
-}
+// .navbar-default .navbar-nav>li a:hover::before {
+// 	opacity: 1;
+// }
 
 .navbar-default {
 	background: linear-gradient(to top, #767676, #151515);
