@@ -54,13 +54,13 @@ body {
 }
 a, a:hover {text-decoration: none;}
 
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a, {
 	position: relative;
 	color: #A0A0A0;
 }
 
 .navbar-default .navbar-nav>li a:hover {
-	background-color: #C71111;
+	background: linear-gradient(to top,#6A0202, #FD2525);
 	position: relative;
 	transform: rotate(7deg);
 	color: #E2E2E2;
@@ -89,8 +89,30 @@ section {
     bottom: 15px;
     right: 15px;
 }
-/* Переназначаем убогие стили самого Бутстрапа */
 .go-to-top.btn-lg {
     padding: 10px 15px;
     border-radius: 3px;
+}
+
+.dropdown ul li a {
+
+}
+
+@media (max-width: 768px) {
+	.col-xs-3 {
+		position: relative;
+		left: 1000px;
+	}
+	.col-xs-9 {
+		width: 100%;
+	}
+	.navbar-collapse ul li  {
+		float: left;
+	}
+	.open {
+		max-width: 40%;
+	}
+	.dropdown ul li a {
+		color: #fff;
+	}
 }
