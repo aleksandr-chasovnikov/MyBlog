@@ -2,7 +2,7 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
-*/
+   */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -47,55 +47,53 @@ table {
 	border-spacing: 0;
 }
 
+/* -- MAIN -- */
+
 body {
 	background: url(../img/bg.png) repeat #353535;
 	background-attachment: fixed;
 	font-size: 1.2em;
 }
+
+p {
+text-indent: 25px;  //Отступы
+}
+
 a, a:hover {text-decoration: none;}
 
-.navbar-default .navbar-nav>li>a, {
+/* -- HEADER -- */
+
+.navbar-default .navbar-nav>li>a {
 	position: relative;
-	color: #A0A0A0;
+	color: #B0B0B0;
 }
 
 .navbar-default .navbar-nav>li a:hover {
-	background: linear-gradient(to top,#6A0202, #FD2525);
+	background: -webkit-linear-gradient(bottom, #403A92, #5D73F7);
+	background: -o-linear-gradient(bottom, #403A92, #5D73F7);
+	background: linear-gradient(to top, #403A92, #5D73F7);
 	position: relative;
 	transform: rotate(7deg);
-	color: #E2E2E2;
+	color: #fff;
 	font-size: 130%;
 	transition-duration: .8s;
 }
 
-// .navbar-default .navbar-nav>li a:hover::before {
-// 	opacity: 1;
-// }
-
 .navbar-default {
+	background: -webkit-linear-gradient(bottom, #767676, #151515);
+	background: -o-linear-gradient(bottom, #767676, #151515);
 	background: linear-gradient(to top, #767676, #151515);
+	transition: all 0.5s ease 0s;
 	border: none;
 }
+
+/* -- SECTION -- */
+
 section {
-	background-color: #DADADA;
+	margin-top: -10px;
+	background-color: #fff;
 	border-radius: 5px;
-	padding: 10px;
-}
-
-.go-to-top {
-    cursor: pointer;
-    display: none;
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-}
-.go-to-top.btn-lg {
-    padding: 10px 15px;
-    border-radius: 3px;
-}
-
-.dropdown ul li a {
-
+	padding: 10px 0.1%;
 }
 
 @media (max-width: 768px) {
@@ -107,12 +105,78 @@ section {
 		width: 100%;
 	}
 	.navbar-collapse ul li  {
-		float: left;
+		display: inline-block;
 	}
-	.open {
-		max-width: 40%;
-	}
-	.dropdown ul li a {
-		color: #fff;
-	}
+}
+
+
+/*  -- accordion  --  */
+#accordion .panel{
+	border: none;
+}
+
+#accordion .panel-heading{
+	padding: 0;
+	text-align: center;
+	border: none;
+}
+
+#accordion .panel-title a{
+	display: block;
+	padding: 15px;
+	font-size: 16px;
+	color: #B0B0B0;
+	background: -webkit-linear-gradient(bottom, #767676, #151515);
+	background: -o-linear-gradient(bottom, #767676, #151515);
+	background: linear-gradient(to top, #767676, #151515);
+	transition: all 0.5s ease 0s;
+}
+
+#accordion .panel-title a:hover{
+	background: rgba(12, 1, 25, 0.8);
+}
+
+#accordion .panel-body{
+	font-size: 14px;
+	color: #fff;
+	background: -webkit-linear-gradient(bottom, #403A92, #5D73F7);
+	background: -o-linear-gradient(bottom, #403A92, #5D73F7);
+	background: linear-gradient(to top, #403A92, #5D73F7);
+	padding: 15px 20px;
+	line-height: 25px;
+	border: none;
+	position: relative;
+}
+
+#accordion .panel-body:after{
+	content: "";
+	position: absolute;
+	top: -30px;
+	left: 40px;
+	border: 15px solid transparent;
+	border-bottom: 15px solid #5D73F7;
+}
+
+.form-control {
+	margin: 5px;
+}
+
+/* -- FOOTER -- */
+
+.go-to-top {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 7%;
+	max-width: 60px;
+	bottom: 2%;
+	right: 2%;	
+	border: none;
+	background: -webkit-linear-gradient(bottom, #403A92, #5D73F7);
+	background: -o-linear-gradient(bottom, #403A92, #5D73F7);
+	background: linear-gradient(to top, #403A92, #5D73F7);
+}
+.go-to-top.btn-lg {
+	border-radius: 10px;
 }
