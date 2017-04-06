@@ -1,13 +1,20 @@
 @import "bootstrap.min.css";
 @import "reset.css";
-@import "accordion.css";
-@import "adaptive_fonts.css";
-@import "adaptive_menu_jQuery.css";
-@import "adaptive_video.css";
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-   */
+.gradient1 {
+  background: -webkit-linear-gradient(bottom, #403a92, #5d73f7);
+  background: -o-linear-gradient(bottom, #403a92, #5d73f7);
+  background: linear-gradient(to top, #403a92, #5d73f7);
+}
+.gradient-nav {
+  background: -webkit-linear-gradient(bottom, #767676, #151515);
+  background: -o-linear-gradient(bottom, #767676, #151515);
+  background: linear-gradient(to top, #767676, #151515);
+}
+.border-radius {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 body {
   background: url(../img/bg.png) repeat #353535;
   background-attachment: fixed;
@@ -32,11 +39,18 @@ a:hover {
   min-width: 30rem;
   color: #a4a4a4;
 }
-.navbar-default .navbar-nav > li > a {
+.navbar-default {
+  background: -webkit-linear-gradient(bottom, #767676, #151515);
+  background: -o-linear-gradient(bottom, #767676, #151515);
+  background: linear-gradient(to top, #767676, #151515);
+  transition: all 0.5s ease 0s;
+  border: none;
+}
+.navbar-default .navbar-nav li a {
   position: relative;
   color: #a4a4a4;
 }
-.navbar-default .navbar-nav > li a:hover {
+.navbar-default .navbar-nav li a:hover {
   background: -webkit-linear-gradient(bottom, #403a92, #5d73f7);
   background: -o-linear-gradient(bottom, #403a92, #5d73f7);
   background: linear-gradient(to top, #403a92, #5d73f7);
@@ -46,16 +60,9 @@ a:hover {
   font-size: 130%;
   transition-duration: .8s;
 }
-.navbar-default {
-  background: -webkit-linear-gradient(bottom, #767676, #151515);
-  background: -o-linear-gradient(bottom, #767676, #151515);
-  background: linear-gradient(to top, #767676, #151515);
-  transition: all 0.5s ease 0s;
-  border: none;
-}
 /* -- SECTION -- */
 section {
-  background-color: #e0e0e0;
+  background-color: #eeeeee;
   margin-top: -10px;
   border-radius: 5px;
   padding: 10px 0.1%;
@@ -64,29 +71,6 @@ section {
   position: relative;
   right: 1000px;
 }
-.form-control {
-  margin: 5px;
-}
-/*--Поиск-*/
-/*
-.icon-search {	
-	height: 34px;
-	display: inline-block;
-	border: 1px solid #B5B5B5;
-	padding: 5px;
-	position: relative;
-	top: 2px;
-	left: 4px;
-}
-
-input[type="search"] {
-	width: 83%;
-	display: inline-block;
-	border-top-left-radius: 0;
-	border-bottom-left-radius: 0;
-	border-left: none;
-	margin: auto;
-}*/
 .box {
   margin: 100px auto;
   width: 300px;
@@ -132,8 +116,10 @@ input[type="search"] {
   background: -o-linear-gradient(bottom, #403a92, #5d73f7);
   background: linear-gradient(to top, #403a92, #5d73f7);
 }
-.go-to-top.btn-lg {
-  border-radius: 10px;
+.go-to-top .btn-lg {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 .sds {
   margin: 10px;
@@ -141,4 +127,134 @@ input[type="search"] {
   -moz-box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
   /*box-shadow: inset(тень внутри) <сдвиг по x> <сдвиг по y> <радиус размытия> <растяжение> <цвет>*/
+}
+/*ACCORDION*/
+#accordion .panel {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 5px;
+}
+#accordion .panel-heading {
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+  border: none;
+}
+#accordion .panel-body {
+  font-size: 14px;
+  color: #484848;
+  background: #d2d2d2;
+  padding: 15px 20px;
+  line-height: 25px;
+  border: none;
+  position: relative;
+}
+#accordion .panel-body:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 40px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #eeeeee;
+}
+#accordion .panel-title a {
+  display: block;
+  padding: 15px;
+  font-size: 20px;
+  color: #eeeeee;
+  background: #5A768A;
+  transition: all 0.5s ease 0s;
+}
+#accordion .panel-title a:hover {
+  background: #414041;
+}
+/*ACCORDION*/
+/*ADAPTIVE FONTS*/
+h2 {
+  font-size: 3rem;
+  margin: 1.5rem 0;
+}
+p {
+  font-size: 18px;
+}
+.changed {
+  font-size: 1rem;
+}
+@media screen and (max-width: 990px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 328px) {
+  html {
+    font-size: 5px;
+  }
+}
+/*ADAPTIVE FONTS*/
+/*ADAPTIVE VIDEO*/
+iframe {
+  width: 100%;
+  height: 70%;
+  border: none;
+}
+.relation {
+  position: relative;
+  margin: auto;
+}
+.relation__ratio-16x9 {
+  padding-top: 56.25%;
+}
+.relation__ratio-4x3 {
+  padding-top: 75%;
+}
+.relation__ratio-1x1 {
+  padding-top: 100%;
+}
+.relation__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #eee;
+}
+.video_size {
+  max-width: 700px;
+}
+/*ADAPTIVE VIDEO*/
+/*ADAPTIVE MENU*/
+nav .wrapper {
+  position: relative;
+}
+.menu li {
+  float: left;
+}
+.menu li a {
+  display: inline-block;
+  padding: 10px 15px;
+}
+.menuToggle {
+  padding: 10px 15px;
+  display: none;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background: #EEEEEE;
+  }
+  .menu li {
+    float: none;
+  }
+  .menuToggle {
+    display: inline-block;
+    color: #000;
+  }
 }
