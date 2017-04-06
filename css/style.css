@@ -1,9 +1,9 @@
 @import "bootstrap.min.css";
 @import "reset.css";
 .gradient1 {
-  background: -webkit-linear-gradient(bottom, #403a92, #5d73f7);
-  background: -o-linear-gradient(bottom, #403a92, #5d73f7);
-  background: linear-gradient(to top, #403a92, #5d73f7);
+  background: -webkit-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
 }
 .gradient-nav {
   background: -webkit-linear-gradient(bottom, #767676, #151515);
@@ -51,9 +51,9 @@ a:hover {
   color: #a4a4a4;
 }
 .navbar-default .navbar-nav li a:hover {
-  background: -webkit-linear-gradient(bottom, #403a92, #5d73f7);
-  background: -o-linear-gradient(bottom, #403a92, #5d73f7);
-  background: linear-gradient(to top, #403a92, #5d73f7);
+  background: -webkit-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
   position: relative;
   transform: rotate(7deg);
   color: #a4a4a4;
@@ -66,10 +66,6 @@ section {
   margin-top: -10px;
   border-radius: 5px;
   padding: 10px 0.1%;
-}
-.button-show {
-  position: relative;
-  right: 1000px;
 }
 .box {
   margin: 100px auto;
@@ -104,22 +100,21 @@ section {
 /* -- FOOTER -- */
 .go-to-top {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
   width: 7%;
-  max-width: 60px;
-  bottom: 2%;
-  right: 2%;
+  max-width: 80px;
+  height: 100%;
+  bottom: 1%;
   border: none;
-  background: -webkit-linear-gradient(bottom, #403a92, #5d73f7);
-  background: -o-linear-gradient(bottom, #403a92, #5d73f7);
-  background: linear-gradient(to top, #403a92, #5d73f7);
+  background: -webkit-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: -o-linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
+  background: linear-gradient(to right, #ffffff, rgba(255, 255, 255, 0));
 }
-.go-to-top .btn-lg {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+.go-to-top:hover {
+  background: #000;
 }
 .sds {
   margin: 10px;
@@ -156,7 +151,7 @@ section {
   top: -30px;
   left: 40px;
   border: 15px solid transparent;
-  border-bottom: 15px solid #eeeeee;
+  border-bottom: 15px solid #d2d2d2;
 }
 #accordion .panel-title a {
   display: block;
@@ -222,7 +217,7 @@ iframe {
   height: 100%;
   top: 0;
   left: 0;
-  background: #eee;
+  background: #a4a4a4;
 }
 .video_size {
   max-width: 700px;
@@ -231,6 +226,11 @@ iframe {
 /*ADAPTIVE MENU*/
 nav .wrapper {
   position: relative;
+  background: #868EF9;
+  min-width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 .menu li {
   float: left;
@@ -248,7 +248,7 @@ nav .wrapper {
   .menu {
     display: none;
     position: absolute;
-    background: #EEEEEE;
+    background: #868EF9;
   }
   .menu li {
     float: none;
