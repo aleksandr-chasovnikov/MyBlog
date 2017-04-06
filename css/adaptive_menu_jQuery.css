@@ -1,0 +1,50 @@
+
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+nav {
+  background: #9A9A9A;
+}
+
+nav .wrapper {
+  position: relative;
+}
+
+.menu {
+
+}
+
+.menu li {
+  float: left;
+}
+
+.menu li a {
+  display: inline-block;
+  padding: 10px 15px;
+}
+
+.menuToggle { 
+  padding: 10px 15px;
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .menu {
+    display: none;
+    position: absolute;
+    background: #eee;
+  }
+
+  .menu li {
+    float: none;
+  }
+
+  .menuToggle {
+    display: inline-block;
+    color: #000;
+  }
+}
