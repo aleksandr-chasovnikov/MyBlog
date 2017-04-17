@@ -1,7 +1,20 @@
-<IfModule mod_rewrite.c>
-	RewriteEngine on
-	RewriteBase /
-	RewriteCond %{HTTP_HOST} ^www.tracher.com
-	RewriteRule ^(.*)$ index.php
-	RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
-</IfModule>
+AddDefaultCharset utf-8
+
+RewriteEngine on
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ index.php
+
+# Попробуйте эту настройку .htaccess, если у Вас возникли проблемы с отображением
+# стилей css
+#AddDefaultCharset cp-1251
+#ErrorDocument 404 / 
+#RewriteEngine On
+#RewriteCond %{REQUEST_FILENAME} -s [OR]
+#RewriteCond %{REQUEST_FILENAME} -l [OR]
+#RewriteCond %{REQUEST_FILENAME} -d
+#RewriteRule ^.*$ - [L]
+#RewriteRule ^.*$ index.php [L]
