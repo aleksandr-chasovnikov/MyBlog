@@ -14,31 +14,27 @@
 						</a>
 					</li>
 					<li><a href="/admin">Админпанель</a></li>
-					<li class="active">Управление товарами</li>
+					<li class="active">Управление статьями</li>
 				</ol>
 			</div>
 
-			<a href="/views/admin_product/create" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить товар</a>
+			<a href="/admin/product/create"><i class="fa fa-plus"></i> Добавить статью</a>
 
-			<h4>Список товаров</h4>
+			<h4>Список статей</h4>
 
 			<br>
 
 			<table class="table-bordered table-striped table">
 				<tr>
-					<td>ID товара</td>
-					<td>Артикул</td>
-					<td>Название товара</td>
-					<td>Цена</td>
+					<td>Название</td>
 					<td></td>
 					<td></td>
 				</tr>
 				<?php foreach ($productsList as $product): ?>
 				<tr>
 					<td><?php echo $product['id']; ?></td>
-					<td><?php echo $product['code']; ?></td>
 					<td><?php echo $product['name']; ?></td>
-					<td><?php echo $product['price']; ?></td>
+					<td><?php echo $product['description']; ?></td>
 					<td><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать"><i class="fa fa-pencil"></i></a></td>
 					<td><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
 				</tr>

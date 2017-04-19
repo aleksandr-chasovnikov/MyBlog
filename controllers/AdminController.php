@@ -1,13 +1,13 @@
 <?php
 
 /**
+ * Контроллер AdminController
  * Главная страница в админпанели
  */
 class AdminController extends AdminBase
 {
-
     /**
-     *  Action для стартовой страницы "Панель администратора"
+     * Action для стартовой страницы "Панель администратора"
      */
     public function actionIndex()
     {
@@ -15,7 +15,7 @@ class AdminController extends AdminBase
         self::checkAdmin();
 
         // Подключаем вид
-        require_once (ROOT . '/views/admin/index.php');
+        require_once(ROOT . '/views/admin/index.php');
         return true;
     }
 

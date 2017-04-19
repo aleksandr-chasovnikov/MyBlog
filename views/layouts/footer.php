@@ -1,17 +1,17 @@
 
-    <footer class="footer"><!-- FOOTER =============== -->
-      <div class="footer__logo logo">
-        <img src="" alt="logo" class="logo__img logo__img_small">
-      </div>
+<footer class="footer"><!-- FOOTER =============== -->
+  <div class="footer__logo logo">
+    <img src="" alt="logo" class="logo__img logo__img_small">
+  </div>
 
-      <div class="copy">
-          <p class="copy text-center">&copy; Компания </p>
-      </div>      
-    </footer><!-- FOOTER END =============== -->
+  <div class="copy">
+    <p class="copy text-center">&copy; Компания </p>
+  </div>      
+</footer><!-- FOOTER END =============== -->
 
 </div><!-- wrapper END -->
 
-  <a href="#" class="btn up-button" role="button" title="Кнопка вверх"></a>
+<a href="#" class="btn up-button" role="button" title="Кнопка вверх"></a>
 
     <!--[if lt IE 9]>
     <script src="libs/html5shiv/es5-shim.min.js"></script>
@@ -37,6 +37,17 @@
     <!-- Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
     <!-- Google Analytics counter --><!-- /Google Analytics counter -->
     <script src="js/custom.js"></script>
+    <script>
+      $(document).ready(function(){
+        $(".add-to-cart").click(function () {
+          var id = $(this).attr("data-id");
+          $.post("/cart/addAjax/"+id, {}, function (data) {
+            $("#cart-count").html(data);
+          });
+          return false;
+        });
+      });
+    </script>
 
   </body>
   </html>

@@ -1,84 +1,84 @@
+<?php include ROOT . '/views/layouts/header_admin.php'; ?>
 
+<section>
+	<div class="container">
+		<div class="row">
 
-<?php endif; ?>
+			<div class="breadcrumbs">
+				<ol class="breadcrumb">
+					<li><a href="/admin">Админпанель</a></li>
+					<li><a href="/admin/product">Управление статьями</a></li>
+					<li class="active">Редактировать статью</li>
+				</ol>
+			</div>
+			<h4>Добавить новую статью</h4>
+			<br/>
 
-<div class="col-lg-4">
-	<div class="login-form">
-		<form action="#" method="post" enctype="multypart/form-date">
-
-			<p>Название товара</p>
-			<input type="text" name="name" placeholder="" value="">
-			
-
-			<p>Артикул</p>
-			<input type="text" name="code" placeholder="" value="">
-			
-
-			<p>Стоимость, руб</p>
-			<input type="text" name="price" placeholder="" value="">
-			
-
-			<p>Категория</p>
-			<select name="category_id">
-				<?php if (is_array($categoriesList)): ?>
-					<?php foreach ($categoriesList as $category): ?>
-						<option value="<?php echo $category['id']; ?>">
-							<?php echo $category['name']; ?>
-						</option>
+			<?php if (isset($errors) && is_array($errors)): ?>
+				<ul>
+					<?php foreach ($errors as $error): ?>
+						<li> - <?php echo $error; ?></li>
 					<?php endforeach; ?>
-				<?php endif; ?>
-			</select>
+				</ul>
+			<?php endif; ?>
 
-			<br><br>
+			<div class="col-lg-4">
+				<div class="login-form">
+					<form action="#" method="post" enctype="multypart/form-date">
 
-			<p>Производитель</p>
-			<input type="text" name="brand" placeholder="" value="">
-			
+						<p>Название</p>
+						<input type="text" name="name" placeholder="" value="" required>			
 
-			<p>Изображение товара</p>
-			<input type="file" name="image" placeholder="" value="">
+						<p>Категория</p>
+						<select name="category_id">
 
-			<p>Детальное описание</p>
-			<textarea name="description"></textarea>
+							<?php if (is_array($categoriesList)): ?>
+								<?php foreach ($categoriesList as $category): ?>
 
-			<br><br>
+									<option value="<?php echo $category['id']; ?>">
 
-			<p>Наличие на складе</p>
-			<select name="availability">
-				<option value="1" selected="selected">Да</option>
-				<option value="0">Нет</option>
-			</select>
+										<?php echo $category['name']; ?>
 
-			<br><br>
+									</option>
 
-			<p>Новинка</p>
-			<select name="is_new">
-				<option value="1" selected="selected">Да</option>
-				<option value="0">Нет</option>
-			</select>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-			<br><br>
+						</select>
 
-			<p>Рекомендуемые</p>
-			<select name="is_recommended">
-				<option value="1" selected="selected">Да</option>
-				<option value="0">Нет</option>
-			</select>
+						<br><br>
 
-			<br><br>
 
-			<p>Статус</p>
-			<select name="status">
-				<option value="1" selected="selected">Отображается</option>
-				<option value="0">Скрыт</option>
-			</select>
+						<p>Изображение</p>
+						<input type="file" name="image" placeholder="" value="">
 
-			<br><br>
+						<p>Описание</p>
+						<textarea name="description" required></textarea>
 
-			<input type="submit" name="submit" value="Сохранить" class="btn btn-default">
+						<br><br>
 
-			<br><br>
+						<p>Текст</p>
+						<textarea name="content" required></textarea>
 
-		</form>
-	</div>
-</div>
+						<br><br>
+
+						<p>Статус</p>
+						<select name="status">
+							<option value="1" selected="selected">Отображается</option>
+							<option value="0">Скрыт</option>
+						</select>
+
+						<br><br>
+
+						<input type="submit" name="submit" value="Сохранить" class="btn btn-default">
+
+						<br><br>
+
+					</form>
+				</div>
+			</div>
+		</div>
+		</div>	
+</section>
+
+<?php include ROOT . '/views/layouts/footer_admin.php'; ?>

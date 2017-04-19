@@ -1,43 +1,48 @@
-<?php 
-
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Product.php';
+<?php
 
 /**
-* 
-*/
+ * Контроллер CatalogController
+ * Каталог статей
+ */
 class CatalogController
 {
-	/**
-	 * Action
-	 */
-	public function actionIndex()
-	{
-		$categories = array();
-		$categories = Category::getCategoriesList();
 
-		$latestProduct = array();
-		$latestProduct = Product::getLatestProducts(8);
+    /**
+     * Action для страницы "Каталог статей"
+     */
+    public function actionIndex()
+    {
+        // Список категорий для левого меню
+        $categories = Category::getCategoriesList();
 
-		requre_once(ROOT . '/views/catalog/index.php');
+        // Список последних статей
+        $latestProducts = Product::getLatestProducts(12);
 
-		return true;
-	}
+        // Подключаем вид
+        require_once(ROOT . '/views/catalog/index.php');
+        return true;
+    }
 
-	/**
-	 * Action
-	 */
-	public function actionCategory($categoryId, $page = 1)
-	{
-		$categories = array();
-		$categories = Category::getCategoriesList();
+    /**
+     * Action для страницы "Категория статей"
+     */
+    public function actionCategory($categoryId, $page = 1)
+    {
+        // Список категорий для левого меню
+        $categories = Category::getCategoriesList();
 
-		$categoryProduct = array();
-		$categoryProduct = Product::getProductsListByCategory($categoryId, $page);
+        // Список статей в категории
+        $categoryProducts = Product::getProductsListByCategory($categoryId, $page);
 
-		requre_once(ROOT . '/views/catalog/category.php');
+        // Общее количетсво статей (необходимо для постраничной навигации)
+        $total = Product::getTotalProductsInCategory($categoryId);
 
-		return true;
-	}
+        // Создаем объект Pagination - постраничная навигация
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+
+        // Подключаем вид
+        require_once(ROOT . '/views/catalog/category.php');
+        return true;
+    }
 
 }

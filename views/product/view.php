@@ -44,7 +44,6 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
-								<h5>Описание товара</h5>
 								<p><?php echo $product['content']; ?></p>
 							</div>
 						</div>

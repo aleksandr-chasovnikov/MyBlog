@@ -20,12 +20,12 @@ abstract class AdminBase
         $user = User::getUserById($userId);
 
         // Если роль текущего пользователя "admin", пускаем его в админпанель
-        if ($user['role'] == 'admin') {
+        if ($user['role'] == 'boss') {
             return true;
         }
 
         // Иначе завершаем работу с сообщением об закрытом доступе
-        die('Access denied');
+        die('Access denied / Доступ запрещен');
     }
 
 }

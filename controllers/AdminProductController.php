@@ -1,29 +1,30 @@
 <?php
 
 /**
- * Управление товарами в админпанели
+ * Контроллер AdminProductController
+ * Управление статьями в админпанели
  */
 class AdminProductController extends AdminBase
 {
 
     /**
-     *  Action для страницы "Управление товарами"
+     * Action для страницы "Управление статьями"
      */
     public function actionIndex()
     {
         // Проверка доступа
         self::checkAdmin();
 
-        // Получаем список товаров
+        // Получаем список статей
         $productsList = Product::getProductsList();
 
         // Подключаем вид
-        require_once (ROOT . '/views/admin/index.php');
+        require_once(ROOT . '/views/admin_product/index.php');
         return true;
     }
 
     /**
-     *  Action для страницы "Добавить товар"
+     * Action для страницы "Добавить пост"
      */
     public function actionCreate()
     {
@@ -33,22 +34,18 @@ class AdminProductController extends AdminBase
         // Получаем список категорий для выпадающего списка
         $categoriesList = Category::getCategoriesListAdmin();
 
-        //Обработка формы
+        // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
             // Получаем данные из формы
             $options['name'] = $_POST['name'];
-            $options['code'] = $_POST['code'];
-            $options['price'] = $_POST['price'];
             $options['category_id'] = $_POST['category_id'];
-            $options['brand'] = $_POST['brand'];
-            $options['availability'] = $_POST['availability'];
             $options['description'] = $_POST['description'];
+            $options['content'] = $_POST['content'];
             $options['is_new'] = $_POST['is_new'];
-            $options['is_recommended'] = $_POST['is_recommended'];
             $options['status'] = $_POST['status'];
 
-            // Флаг ошибки
+            // Флаг ошибок в форме
             $errors = false;
 
             // При необходимости можно валидировать значения нужным образом
@@ -58,19 +55,19 @@ class AdminProductController extends AdminBase
 
             if ($errors == false) {
                 // Если ошибок нет
-                // Добавляем новый товар
+                // Добавляем новый пост
                 $id = Product::createProduct($options);
 
                 // Если запись добавлена
                 if ($id) {
                     // Проверим, загружалось ли через форму изображение
-                    if (is_uploaded_file($FILES["image"]["tmp_name"])) {
-                        // Если загружалось, переместим его в нужную папку, дадим новое имя
-                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/...");
+                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                        // Если загружалось, переместим его в нужную папке, дадим новое имя
+                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/{$id}.jpg");
                     }
                 };
 
-                // Перенаправляем пользователя на страницу управлениями товарами
+                // Перенаправляем пользователя на страницу управлениями статьями
                 header("Location: /admin/product");
             }
         }
@@ -81,7 +78,7 @@ class AdminProductController extends AdminBase
     }
 
     /**
-     * Action для страницы "Редактировать товар"
+     * Action для страницы "Редактировать пост"
      */
     public function actionUpdate($id)
     {
@@ -91,68 +88,61 @@ class AdminProductController extends AdminBase
         // Получаем список категорий для выпадающего списка
         $categoriesList = Category::getCategoriesListAdmin();
 
-        // Получаем данные о конкретном заказе
+        // Получаем данные о конкретной статье
         $product = Product::getProductById($id);
 
-        //Обработка формы
+        // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
-            // Получаем данные из формы
+            // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $options['name'] = $_POST['name'];
-            $options['code'] = $_POST['code'];
-            $options['price'] = $_POST['price'];
             $options['category_id'] = $_POST['category_id'];
-            $options['brand'] = $_POST['brand'];
-            $options['availability'] = $_POST['availability'];
             $options['description'] = $_POST['description'];
+            $options['content'] = $_POST['content'];
             $options['is_new'] = $_POST['is_new'];
-            $options['is_recommended'] = $_POST['is_recommended'];
             $options['status'] = $_POST['status'];
 
-            // При необходимости можно валидировать значения нужным образом
+            // Сохраняем изменения
             if (Product::updateProductById($id, $options)) {
-
-                echo '<pre>';
-                print_r($_FILES["image"]);
-                echo '<pre>';
 
                 // Если запись сохранена
                 // Проверим, загружалось ли через форму изображение
-                if (is_uploaded_file($FILES["image"]["tmp_name"])) {
-                // Если загружалось, переместим его в нужную папку, дадим новое имя
-                var_dump(move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/..."));
+                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+
+                    // Если загружалось, переместим его в нужную папке, дадим новое имя
+                   move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/products/{$id}.jpg");
                 }
             }
 
-                // Перенаправляем пользователя на страницу управлениями товарами
-                header("Location: /admin/product");
-            }
-        
+            // Перенаправляем пользователя на страницу управлениями статьями
+            header("Location: /admin/product");
+        }
+
         // Подключаем вид
-        require_once(ROOT . '/views/admin_product/create.php');
+        require_once(ROOT . '/views/admin_product/update.php');
         return true;
     }
 
     /**
-     * Action для страницы "Удалить товар"
+     * Action для страницы "Удалить пост"
      */
     public function actionDelete($id)
     {
         // Проверка доступа
         self::checkAdmin();
 
-        //Обработка формы
+        // Обработка формы
         if (isset($_POST['submit'])) {
             // Если форма отправлена
-            // Удаляем товар
+            // Удаляем пост
             Product::deleteProductById($id);
 
-                // Перенаправляем пользователя на страницу управлениями товарами
-                header("Location: /admin/product");
-            }
-        
+            // Перенаправляем пользователя на страницу управлениями статьями
+            header("Location: /admin/product");
+        }
+
         // Подключаем вид
-        require_once(ROOT . '/views/admin_product/create.php');
+        require_once(ROOT . '/views/admin_product/delete.php');
         return true;
     }
 
