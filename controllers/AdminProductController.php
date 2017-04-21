@@ -39,10 +39,10 @@ class AdminProductController extends AdminBase
             // Если форма отправлена
             // Получаем данные из формы
             $options['name'] = $_POST['name'];
+            $options['image'] = $_POST['image'];
             $options['category_id'] = $_POST['category_id'];
             $options['description'] = $_POST['description'];
             $options['content'] = $_POST['content'];
-            $options['is_new'] = $_POST['is_new'];
             $options['status'] = $_POST['status'];
 
             // Флаг ошибок в форме
@@ -96,10 +96,10 @@ class AdminProductController extends AdminBase
             // Если форма отправлена
             // Получаем данные из формы редактирования. При необходимости можно валидировать значения
             $options['name'] = $_POST['name'];
+            $options['image'] = $_POST['image'];
             $options['category_id'] = $_POST['category_id'];
             $options['description'] = $_POST['description'];
             $options['content'] = $_POST['content'];
-            $options['is_new'] = $_POST['is_new'];
             $options['status'] = $_POST['status'];
 
             // Сохраняем изменения

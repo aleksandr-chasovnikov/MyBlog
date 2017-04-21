@@ -232,21 +232,20 @@ class Product
         $sql = "UPDATE product
             SET 
                 name = :name, 
+                image = :image,
                 category_id = :category_id,  
                 description = :description, 
                 content = :content, 
-                is_new = :is_new, 
                 status = :status
             WHERE id = :id";
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':content', $options['content'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
         return $result->execute();
     }
@@ -263,26 +262,21 @@ class Product
 
         // Текст запроса к БД
         $sql = 'INSERT INTO product '
-                . '(name, category_id,'
-                . 'description, content, is_new, status)'
+                . '(name, image, category_id,'
+                . 'description, content, status)'
                 . 'VALUES '
-                . '(:name, :category_id,'
-                . ':description, :content, :is_new, :status)';
+                . '(:name, :image, :category_id,'
+                . ':description, :content, :status)';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':image', $options['image'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':content', $options['content'], PDO::PARAM_STR);
-        $result->bindParam(':is_new', $options['is_new'], PDO::PARAM_INT);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
-        if ($result->execute()) {
-            // Если запрос выполенен успешно, возвращаем id добавленной записи
-            return $db->lastInsertId();
-        }
-        // Иначе возвращаем 0
-        return 0;
+        return $result->execute();
     }
  
     /**

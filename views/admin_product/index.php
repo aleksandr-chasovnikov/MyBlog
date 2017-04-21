@@ -26,9 +26,9 @@
 
 			<table class="table-bordered table-striped table">
 				<tr>
-					<td>Название</td>
-					<td></td>
-					<td></td>
+					<td>id</td>
+					<td>Заголовок</td>
+					<td>Краткое описание</td>
 				</tr>
 				<?php foreach ($productsList as $product): ?>
 				<tr>
