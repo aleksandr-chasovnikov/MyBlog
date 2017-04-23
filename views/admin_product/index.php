@@ -30,7 +30,9 @@
 					<td>Заголовок</td>
 					<td>Краткое описание</td>
 				</tr>
-				<?php foreach ($productsList as $product): ?>
+
+			<?php foreach ($productsList as $product): ?>
+
 				<tr>
 					<td><?php echo $product['id']; ?></td>
 					<td><?php echo $product['name']; ?></td>
@@ -38,7 +40,9 @@
 					<td><a href="/admin/product/update/<?php echo $product['id']; ?>" title="Редактировать"><i class="fa fa-pencil"></i></a></td>
 					<td><a href="/admin/product/delete/<?php echo $product['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
 				</tr>
-				<?php endforeach; ?>
+
+			<?php endforeach; ?>
+				
 			</table>
 		</div><!--/row-->
 	</div><!--/container-->

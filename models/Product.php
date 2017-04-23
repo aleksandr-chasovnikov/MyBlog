@@ -21,7 +21,7 @@ class Product
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, description, is_new FROM product '
+        $sql = 'SELECT id, name, description FROM product '
                 . 'WHERE status = "1" ORDER BY id DESC '
                 . 'LIMIT :count';
 
@@ -42,7 +42,6 @@ class Product
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['description'] = $row['description'];
-            $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         return $productsList;
@@ -64,7 +63,7 @@ class Product
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, description, is_new FROM product '
+        $sql = 'SELECT id, name, descriptionFROM product '
                 . 'WHERE status = 1 AND category_id = :category_id '
                 . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
 
@@ -84,7 +83,6 @@ class Product
             $products[$i]['id'] = $row['id'];
             $products[$i]['name'] = $row['name'];
             $products[$i]['description'] = $row['description'];
-            $products[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         return $products;
