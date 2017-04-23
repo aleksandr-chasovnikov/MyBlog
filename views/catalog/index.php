@@ -12,7 +12,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a href="/category/<?php echo $categoryItem['id'];?>">
-                                            <?php echo $categoryItem['name'];?>
+                                            <?php echo $categoryItem['category_id'];?>
                                         </a>
                                     </h4>
                                 </div>
