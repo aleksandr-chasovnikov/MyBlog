@@ -23,8 +23,6 @@
 						<?php endforeach; ?>
 							
 						</div><!--/category-products-->
-					</div>
-				</div>
 					
 				
 				<div class="col-sm-9 padding-right">
@@ -33,18 +31,23 @@
 
 						<?php foreach ($latestProducts as $product): ?>
 
-						
+						<div class="col-sm-4">
 							<div class="product-image-wrapper">
-								<img src="/template/images/home/product6.jpg" alt="images" />
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="/template/images/home/product6.jpg" alt="images" />
 
-								<a href="/product/<?php echo $product['id'];?>">
-									<h2><?php echo $product['name'];?></h2>
-								</a>
-								<p>
-									<?php echo $product['description'];?>
-								</p>
-								
+										<a href="/product/<?php echo $product['id'];?>">
+											<h2>$<?php echo $product['name'];?></h2>
+										</a>
+										<p>
+											<?php echo $product['description'];?>
+										</p>
+										
+									</div>
+								</div>
 							</div>
+						</div>
 
 						<?php endforeach; ?>
 						

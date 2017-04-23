@@ -3,7 +3,6 @@
 <section>
     <div class="container">
         <div class="row">
-        <div>Выход</div>
 
             <h3>Кабинет пользователя</h3>
             

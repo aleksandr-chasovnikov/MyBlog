@@ -92,7 +92,6 @@ class UserController
 
                 // Перенаправляем пользователя в закрытую часть - кабинет 
                 header("Location: /cabinet");
-                exit;
             }
         }
 

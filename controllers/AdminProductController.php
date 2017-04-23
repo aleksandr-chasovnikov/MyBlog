@@ -19,11 +19,8 @@ class AdminProductController extends AdminBase
         $productsList = Product::getProductsList();
 
         // Подключаем вид
-        $tmpl = new View();
-        $tmpl->display($productsList, 'admin_product/index.php');
-
-        // require_once(ROOT . '/views/admin_product/index.php');
-        // return true;
+        require_once(ROOT . '/views/admin_product/index.php');
+        return true;
     }
 
     /**
