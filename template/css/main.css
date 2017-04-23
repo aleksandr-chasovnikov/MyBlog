@@ -1093,12 +1093,17 @@ h2.title {
 #advertisement img {
   width: 100%;
 }
-
+.pag_parent{
+  position: relative;
+}
 .pagination {
   display: inline-block;
   margin-bottom: 25px;
   margin-top: 0;
   padding-left: 15px;
+  position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
 .pagination  li:first-child  a, .pagination  li:first-child  span {

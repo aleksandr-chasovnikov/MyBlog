@@ -3,6 +3,7 @@
 <section>
     <div class="container">
         <div class="row">
+					<a href="/admin">Админпанель</a>
 
             <h3>Кабинет пользователя</h3>
             

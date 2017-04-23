@@ -14,8 +14,8 @@
 	<link rel="stylesheet" href="/template/css/prettyPhoto.css">
 	<link rel="stylesheet" href="/template/css/price-range.css">
 	<link rel="stylesheet" href="/template/css/animate.css">
-	<link rel="stylesheet" href="/template/css/main.css">
 	<link rel="stylesheet" href="/template/css/responsive.css">
+	<link rel="stylesheet" href="/template/css/main.css">
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>

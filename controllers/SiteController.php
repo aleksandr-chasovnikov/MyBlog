@@ -9,13 +9,19 @@ class SiteController
     /**
      * Action для главной страницы
      */
-    public function actionIndex()
+    public function actionIndex($categoryId, $page = 1)
     {
         // Список категорий для левого меню
         $categories = Category::getCategoriesList();
 
         // Список последних статей
         $latestProducts = Product::getLatestProducts(6);
+
+        // Общее количетсво статей (необходимо для постраничной навигации)
+        $total = Product::getTotalProductsInCategory($categoryId);
+        
+        // Создаем объект Pagination - постраничная навигация
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once(ROOT . '/views/site/index.php');

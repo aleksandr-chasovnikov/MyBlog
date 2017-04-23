@@ -7,7 +7,7 @@ class Product
 {
 
     // Количество отображаемых постов по умолчанию
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 4;
 
     /**
      * Возвращает массив последних постов
@@ -15,13 +15,14 @@ class Product
      * @param type $page [optional] <p>Номер текущей страницы</p>
      * @return array <p>Массив с постами</p>
      */
-    public static function getLatestProducts($count = self::SHOW_BY_DEFAULT)
+    public static function getLatestProducts()
     {
+        $count = self::SHOW_BY_DEFAULT;
         // Соединение с БД
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, description, is_new FROM product '
+        $sql = 'SELECT id, name, description FROM product '
                 . 'WHERE status = "1" ORDER BY id DESC '
                 . 'LIMIT :count';
 
@@ -42,7 +43,6 @@ class Product
             $productsList[$i]['id'] = $row['id'];
             $productsList[$i]['name'] = $row['name'];
             $productsList[$i]['description'] = $row['description'];
-            $productsList[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         return $productsList;
@@ -64,7 +64,7 @@ class Product
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT id, name, description, is_new FROM product '
+        $sql = 'SELECT id, name, description FROM product '
                 . 'WHERE status = 1 AND category_id = :category_id '
                 . 'ORDER BY id ASC LIMIT :limit OFFSET :offset';
 
@@ -84,7 +84,6 @@ class Product
             $products[$i]['id'] = $row['id'];
             $products[$i]['name'] = $row['name'];
             $products[$i]['description'] = $row['description'];
-            $products[$i]['is_new'] = $row['is_new'];
             $i++;
         }
         return $products;
@@ -128,7 +127,9 @@ class Product
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT count(id) AS count FROM product WHERE status="1" AND category_id = :category_id';
+        $sql = 'SELECT count(id) AS count FROM product '
+             . ' WHERE status="1"'
+             . ' AND category_id = :category_id';
 
         // Используется подготовленный запрос
         $result = $db->prepare($sql);

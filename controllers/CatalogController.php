@@ -41,7 +41,7 @@ class CatalogController
         $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
-        require_once(ROOT . '/views/catalog/category.php');
+        require_once(ROOT . '/views/site/category.php');
         return true;
     }
 

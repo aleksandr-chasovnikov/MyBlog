@@ -1,61 +1,43 @@
-<?php include ROOT . '/views/layouts/header.php' ?>
+<?php include ROOT . '/views/layouts/header.php'; ?>
 
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3">
-					<div class="left-sidebar">
-						<h2>Категории</h2>
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+<section>
+    <div class="container">
+        <div class="row">
 
-						<?php foreach ($categories as $categoryItem): ?>
+            <div class="col-sm-4 col-sm-offset-4 padding-right">
 
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">
-										<a href="/category/<?php echo $categoryItem['id'];?>">
-											<?php  echo $categoryItem['name'];?>
-										</a>
-									</h4>
-								</div>
-							</div>
+                <?php if ($result): ?>
+                    <p>Сообщение отправлено! Мы ответим Вам на указанный email.</p>
+                <?php else: ?>
+                    <?php if (isset($errors) && is_array($errors)): ?>
+                        <ul>
+                            <?php foreach ($errors as $error): ?>
+                                <li> - <?php echo $error; ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
 
-						<?php endforeach; ?>
-							
-						</div><!--/category-products-->
-					
-				
-				<div class="col-sm-9 padding-right">
-					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center">Последние посты</h2>
+                    <div class="signup-form"><!--sign up form-->
+                        <h2>Обратная связь</h2>
+                        <h5>Есть вопрос? Напишите нам</h5>
+                        <br/>
+                        <form action="#" method="post">
+                            <p>Ваша почта</p>
+                            <input type="email" name="userEmail" placeholder="E-mail" value="<?php echo $userEmail; ?>"/>
+                            <p>Сообщение</p>
+                            <input type="text" name="userText" placeholder="Сообщение" value="<?php echo $userText; ?>"/>
+                            <br/>
+                            <input type="submit" name="submit" class="btn btn-default" value="Отправить" />
+                        </form>
+                    </div><!--/sign up form-->
+                <?php endif; ?>
 
-						<?php foreach ($latestProducts as $product): ?>
 
-						<div class="col-sm-4">
-							<div class="product-image-wrapper">
-								<div class="single-products">
-									<div class="productinfo text-center">
-										<img src="/template/images/home/product6.jpg" alt="images" />
+                <br/>
+                <br/>
+            </div>
+        </div>
+    </div>
+</section>
 
-										<a href="/product/<?php echo $product['id'];?>">
-											<h2>$<?php echo $product['name'];?></h2>
-										</a>
-										<p>
-											<?php echo $product['description'];?>
-										</p>
-										
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<?php endforeach; ?>
-						
-					</div><!--features_items-->
-					
-				</div>
-			</div>
-		</div>
-	</section>
-	
-<?php include ROOT . '/views/layouts/footer.php' ?>
+<?php include ROOT . '/views/layouts/footer.php'; ?>

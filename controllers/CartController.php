@@ -43,7 +43,7 @@ class CartController
         Cart::deleteProduct($id);
 
         // Возвращаем пользователя в закладки
-        header("Location: /cart");
+        header("Location: /user/cart");
     }
 
     /**
@@ -70,7 +70,7 @@ class CartController
         }
 
         // Подключаем вид
-        require_once(ROOT . '/views/cart/index.php');
+        require_once(ROOT . '/views/user/cart.php');
         return true;
     }
 
