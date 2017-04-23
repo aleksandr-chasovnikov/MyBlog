@@ -14,7 +14,7 @@
                                         <a href="/category/<?php echo $categoryItem['id']; ?>"
                                            class="<?php if ($categoryId == $categoryItem['id']) echo 'active'; ?>"
                                            >                                                                                    
-                                               <?php echo $categoryItem['category_id']; ?>
+                                               <?php echo $categoryItem['name']; ?>
                                         </a>
                                     </h4>
                                 </div>
@@ -35,7 +35,7 @@
                                     <div class="productinfo text-center">
 
                                         <img src="<?php echo Product::getImage($product['id']); ?>" alt="images" />
-                                        <h2>$<?php echo $product['category_id']; ?></h2>
+                                        <h2>$<?php echo $product['name']; ?></h2>
                                         <p>
                                             <a href="/product/<?php echo $product['id']; ?>">
                                                 <?php echo $product['content']; ?>

@@ -16,17 +16,16 @@ class Category
         $db = Db::getConnection();
 
         // Запрос к БД
-        $result = $db->query('SELECT category_id FROM product WHERE status = "1" ORDER BY category_id ASC');
+        $result = $db->query('SELECT id, name FROM category WHERE status = "1" ORDER BY sort_order, name ASC');
 
         // Получение и возврат результатов
         $i = 0;
         $categoryList = array();
         while ($row = $result->fetch()) {
-            $categoryList[$i]['category_id'] = $row['category_id'];
+            $categoryList[$i]['id'] = $row['id'];
+            $categoryList[$i]['name'] = $row['name'];
             $i++;
         }
-
-        $categoryList = array_unique($categoryList, SORT_REGULAR);
         return $categoryList;
     }
 
@@ -41,19 +40,18 @@ class Category
         $db = Db::getConnection();
 
         // Запрос к БД
-        $result = $db->query('SELECT id, category_id, status FROM product ORDER BY category_id ASC');
+        $result = $db->query('SELECT id, name, sort_order, status FROM category ORDER BY sort_order ASC');
 
         // Получение и возврат результатов
         $categoryList = array();
         $i = 0;
         while ($row = $result->fetch()) {
             $categoryList[$i]['id'] = $row['id'];
-            $categoryList[$i]['category_id'] = $row['category_id'];
+            $categoryList[$i]['name'] = $row['name'];
+            $categoryList[$i]['sort_order'] = $row['sort_order'];
             $categoryList[$i]['status'] = $row['status'];
             $i++;
         }
-
-        $categoryList = array_unique($categoryList, SORT_REGULAR);
         return $categoryList;
     }
 
@@ -68,7 +66,7 @@ class Category
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'DELETE FROM product WHERE id = :id';
+        $sql = 'DELETE FROM category WHERE id = :id';
 
         // Получение и возврат результатов. Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -84,27 +82,27 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат выполнения метода</p>
      */
-    // public static function updateCategoryById($id, $name, $sortOrder, $status)
-    // {
-    //     // Соединение с БД
-    //     $db = Db::getConnection();
+    public static function updateCategoryById($id, $name, $sortOrder, $status)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
 
-    //     // Текст запроса к БД
-    //     $sql = "UPDATE category
-    //         SET 
-    //             name = :name, 
-    //             sort_order = :sort_order, 
-    //             status = :status
-    //         WHERE id = :id";
+        // Текст запроса к БД
+        $sql = "UPDATE category
+            SET 
+                name = :name, 
+                sort_order = :sort_order, 
+                status = :status
+            WHERE id = :id";
 
-    //     // Получение и возврат результатов. Используется подготовленный запрос
-    //     $result = $db->prepare($sql);
-    //     $result->bindParam(':id', $id, PDO::PARAM_INT);
-    //     $result->bindParam(':name', $name, PDO::PARAM_STR);
-    //     $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-    //     $result->bindParam(':status', $status, PDO::PARAM_INT);
-    //     return $result->execute();
-    // }
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
+        $result->bindParam(':status', $status, PDO::PARAM_INT);
+        return $result->execute();
+    }
 
     /**
      * Возвращает категорию с указанным id
@@ -117,7 +115,7 @@ class Category
         $db = Db::getConnection();
 
         // Текст запроса к БД
-        $sql = 'SELECT * FROM product WHERE category_id = :id';
+        $sql = 'SELECT * FROM category WHERE id = :id';
 
         // Используется подготовленный запрос
         $result = $db->prepare($sql);
@@ -158,21 +156,21 @@ class Category
      * @param integer $status <p>Статус <i>(включено "1", выключено "0")</i></p>
      * @return boolean <p>Результат добавления записи в таблицу</p>
      */
-    // public static function createCategory($name, $sortOrder, $status)
-    // {
-    //     // Соединение с БД
-    //     $db = Db::getConnection();
+    public static function createCategory($name, $sortOrder, $status)
+    {
+        // Соединение с БД
+        $db = Db::getConnection();
 
-    //     // Текст запроса к БД
-    //     $sql = 'INSERT INTO category (name, sort_order, status) '
-    //             . 'VALUES (:name, :sort_order, :status)';
+        // Текст запроса к БД
+        $sql = 'INSERT INTO category (name, sort_order, status) '
+                . 'VALUES (:name, :sort_order, :status)';
 
-    //     // Получение и возврат результатов. Используется подготовленный запрос
-    //     $result = $db->prepare($sql);
-    //     $result->bindParam(':name', $name, PDO::PARAM_STR);
-    //     $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
-    //     $result->bindParam(':status', $status, PDO::PARAM_INT);
-    //     return $result->execute();
-    // }
+        // Получение и возврат результатов. Используется подготовленный запрос
+        $result = $db->prepare($sql);
+        $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':sort_order', $sortOrder, PDO::PARAM_INT);
+        $result->bindParam(':status', $status, PDO::PARAM_INT);
+        return $result->execute();
+    }
 
 }
